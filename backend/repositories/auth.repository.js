@@ -1,5 +1,6 @@
 const User = require('../models/user.model');
 const ConflictError = require('../errors/conflict.error');
+const NotFoundError = require('../errors/notFound.error');
 
 class AuthRepository {
     async signUpUser(userData) {
@@ -25,6 +26,26 @@ class AuthRepository {
         } catch (error) {
             throw error;
         }
+    }
+
+    async logInUser(userData) {
+        try {
+            const { userName, password } = userData;
+
+            const user = await User.findOne({ userName }); // finding user with the entered username
+    
+            if(!user) { // if user with entered username not found
+                throw new NotFoundError("User", userName);
+            }
+    
+            return user;
+        } catch (error) {
+            throw error;
+        }
+    }
+
+    async logOutUser(userData) {
+
     }
 }
 

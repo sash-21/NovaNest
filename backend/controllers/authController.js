@@ -24,8 +24,25 @@ async function signUp(req, res, next) {
 }
 
 async function logIn(req, res, next) {
-    res.send('login called');
-    console.log("logIn");
+    try {
+        const loginUser = await authService.logInUser(req.body);
+
+        // generating JWT token
+        generateTokenAndSetCookie(loginUser._id, res);
+
+        return res.status(StatusCodes.ACCEPTED).json({
+            success: true,
+            message: "User Logged In",
+            data: {
+                _id: loginUser._id,
+                fullName: loginUser.fullName,
+                userName: loginUser.userName,
+                profilePicture: loginUser.profilePicture,
+            },
+        });
+    } catch (error) {
+        next(error);
+    }
 }
 
 async function logOut(req, res, next) {
