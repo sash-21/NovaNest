@@ -37,7 +37,7 @@ class AuthRepository {
             if(!user) { // if user with entered username not found
                 throw new NotFoundError("User", userName);
             }
-    
+            
             return user;
         } catch (error) {
             throw error;

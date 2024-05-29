@@ -41,17 +41,24 @@ class AuthService {
         const { password } = userData;
 
         // Taking data from the repository
-        const loginUser = await this.authRepository.logInUser(userData); 
+        const user = await this.authRepository.logInUser(userData); 
 
         // Checking if the entered password and password from repository(decoded) match or not
-        const isPasswordCorrect = await bcrypt.compare(password, loginUser?.password || "");
+        const isPasswordCorrect = await bcrypt.compare(password, user?.password || "");
 
         if(!isPasswordCorrect) {
             throw new BadRequestError("Username / Password", 'Username or Password is not Correct!');
         }
 
         // if password is correct the return the user data
-        return loginUser;
+        const logInUserData = {
+            _id: user._id,
+            fullName: user.fullName,
+            userName: user.userName,
+            profilePicture: user.profilePicture,
+        };
+
+        return logInUserData;
     }
 
     async logOutUser(userData) {

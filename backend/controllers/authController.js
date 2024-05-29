@@ -33,12 +33,7 @@ async function logIn(req, res, next) {
         return res.status(StatusCodes.ACCEPTED).json({
             success: true,
             message: "User Logged In",
-            data: {
-                _id: loginUser._id,
-                fullName: loginUser.fullName,
-                userName: loginUser.userName,
-                profilePicture: loginUser.profilePicture,
-            },
+            data: loginUser,
         });
     } catch (error) {
         next(error);
