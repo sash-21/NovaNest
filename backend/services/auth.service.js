@@ -1,5 +1,6 @@
 const checkPassword = require("../validators/checkPassword.validator");
 const BadRequestError = require("../errors/badRequest.error");
+const encryptPassword = require("../utils/hashPassword");
 
 class AuthService {
     constructor(authRepository) {
@@ -19,11 +20,14 @@ class AuthService {
         const boyProfilePic = 'https://avatar.iran.liara.run/public/boy?username=${userName}';
         const girlProfilePic = 'https://avatar.iran.liara.run/public/girl?username=${userName}';
 
+        // Hashing the password
+        const hashedPassword = await encryptPassword(password);
+
         // Forming the data for saving in repository
         const newUser = {};
         newUser.fullName = fullName;
         newUser.userName = userName;
-        newUser.password = password;
+        newUser.password = hashedPassword;
         newUser.gender = gender;
         newUser.profilePicture = (gender==="Male") ? boyProfilePic : girlProfilePic;
 

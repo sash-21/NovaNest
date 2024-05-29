@@ -2,12 +2,16 @@ const { StatusCodes } = require('http-status-codes');
  
 const AuthService = require('../services/auth.service');
 const AuthRepository = require('../repositories/auth.repository');
+const generateTokenAndSetCookie = require('../utils/generateToken');
 
 const authService = new AuthService(new AuthRepository());
 
 async function signUp(req, res, next) {
     try {
         const newUser = await authService.signUpUser(req.body);
+
+        // Generating a JWT token
+        generateTokenAndSetCookie(newUser._id, res); 
 
         return res.status(StatusCodes.CREATED).json({
             success: true,
