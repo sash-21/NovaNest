@@ -5,6 +5,7 @@ const cookieParser = require('cookie-parser');
 
 const authRouter = require('./routes/auth.routes');
 const messageRouter = require('./routes/message.routes');
+const userRouter = require('./routes/user.routes');
 const connectDB = require('./config/db.config');
 const errorHandler = require('./utils/errorHandler');
 dotenv.config();
@@ -23,6 +24,7 @@ app.use(cookieParser());
 
 app.use('/api/auth', authRouter);
 app.use('/api/messages', messageRouter);
+app.use('/api/users', userRouter);
 
 app.use(errorHandler); // Last middleware to be called for error handling
 
@@ -30,4 +32,3 @@ app.listen(PORT, async () => {
     console.log(`Server running on PORT ${PORT}`);
     await connectDB();
 });
-
