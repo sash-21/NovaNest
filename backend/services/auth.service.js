@@ -61,8 +61,13 @@ class AuthService {
         return logInUserData;
     }
 
-    async logOutUser(userData) {
+    logOutUser() {
+        const logOutUser = {
+            success: true,
+            message: "User logged out successfully"
+        };
 
+        return logOutUser;
     }
 };
 

@@ -41,8 +41,17 @@ async function logIn(req, res, next) {
 }
 
 async function logOut(req, res, next) {
-    res.send('logout called');
-    console.log("logOut");
+    try {
+        const logoutUser = await authService.logOutUser();
+
+        res.cookie("jwt", "", { maxAge: 0 });
+
+        res.status(StatusCodes.ACCEPTED).json({
+            logoutUser,
+        });
+    } catch (error) {
+        next(error);
+    }
 }
 
 module.exports = {

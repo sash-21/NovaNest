@@ -43,10 +43,6 @@ class AuthRepository {
             throw error;
         }
     }
-
-    async logOutUser(userData) {
-
-    }
 }
 
 module.exports = AuthRepository;
