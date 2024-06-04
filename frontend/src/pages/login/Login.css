@@ -1,0 +1,20 @@
+.gold-placeholder::placeholder {
+    color: gold;
+    opacity: 1;
+}
+
+.spacing-large {
+    margin-bottom: 2rem; /* Adjust this value as needed for larger spacing */
+}
+
+.spacing-small {
+    margin-bottom: 1rem; /* Adjust this value as needed for smaller spacing */
+}
+
+.input input {
+    padding-left: 0.5rem; /* Add some padding inside the input for better readability */
+}
+
+.btn-login {
+    width: 100%; /* Ensure the button takes full width for a cleaner look */
+}
