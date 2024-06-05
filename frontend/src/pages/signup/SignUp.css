@@ -1,0 +1,31 @@
+.gold-placeholder::placeholder {
+    color: #4a5568; /* This will make the placeholder color gray like the original label color */
+    opacity: 1;
+}
+
+.spacing-large {
+    margin-bottom: 2rem; /* Adjust this value as needed for larger spacing */
+}
+
+.spacing-small {
+    margin-bottom: 1rem; /* Adjust this value as needed for smaller spacing */
+}
+
+.input input {
+    padding-left: 0.5rem; /* Add some padding inside the input for better readability */
+}
+
+.btn-login {
+    width: 100%; /* Ensure the button takes full width for a cleaner look */
+}
+
+.gold-text {
+    color: gold; /* This will make the label color gold like the original placeholder color */
+}
+
+.form-container {
+    max-width: 500px; /* Adjust the max width as needed */
+    width: 100%;
+    margin: 0 auto; /* Center the container */
+    box-sizing: border-box;
+}

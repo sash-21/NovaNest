@@ -9,6 +9,7 @@ const Login = () => {
 
         <form>
           <div className="spacing-small">
+            <label className="block text-sm font-bold mb-2 text-amber-500" htmlFor="username">Username</label>
             <label className="input input-bordered flex items-center gap-2">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -21,13 +22,14 @@ const Login = () => {
               </svg>
               <input
                 type="text"
-                className="grow gold-placeholder"
-                placeholder="Username"
+                className="grow placeholder-gray-500"
+                placeholder="Enter Username"
               />
             </label>
           </div>
 
           <div className="spacing-small">
+            <label className="block text-sm font-bold mb-2 text-amber-500" htmlFor="password">Password</label>
             <label className="input input-bordered flex items-center gap-2">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -44,8 +46,8 @@ const Login = () => {
               </svg>
               <input
                 type="password"
-                className="grow gold-placeholder"
-                value="password"
+                className="grow placeholder-gray-500"
+                placeholder="Enter Password"
               />
             </label>
           </div>
@@ -58,7 +60,7 @@ const Login = () => {
           </a>
 
           <div className="spacing-small">
-            <button className="btn btn-outline btn-login">Login</button>
+            <button className="btn btn-warning btn-outline btn-login">Login</button>
           </div>
         </form>
       </div>
