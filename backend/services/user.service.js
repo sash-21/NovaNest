@@ -4,7 +4,8 @@ class UserService {
     }
 
     async getAllUsers(loggedInUserId) {
-        return await this.userRepository.getAllUsers(loggedInUserId);
+        const allUsers = await this.userRepository.getAllUsers(loggedInUserId);
+        return allUsers
     }
 }
 

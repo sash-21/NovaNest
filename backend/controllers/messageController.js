@@ -13,11 +13,7 @@ async function sendMessage(req, res, next) {
 
         const newMessage = await messagingService.sendMessage(senderId, recieverId, message);
 
-        res.status(StatusCodes.ACCEPTED).json({
-            success: true,
-            msg: "Sent message successfully",
-            data: newMessage,
-        });
+        res.status(StatusCodes.ACCEPTED).json(newMessage);
     } catch (error) {
         next(error);
     }
@@ -30,10 +26,7 @@ async function getMessages(req, res, next) {
     
         const getChats = await messagingService.getMessages(senderId, userId);
     
-        res.status(StatusCodes.ACCEPTED).json({
-            success: true,
-            data: getChats,
-        });
+        res.status(StatusCodes.ACCEPTED).json(getChats);
     } catch (error) {
         next(error);
     }

@@ -1,16 +1,28 @@
 import { Link } from 'react-router-dom';
 import './Login.css';
+import { useState } from 'react';
+import useLogin from '../../hooks/useLogin.js';
 
 const Login = () => {
+  const [userName, setUsername] = useState('');
+	const [password, setPassword] = useState('');
+
+	const { loading, logIn } = useLogin();
+
+	const handleSubmit = async (e) => {
+		e.preventDefault();
+		await logIn({userName, password});
+	};
+
   return (
     <div className="flex flex-col items-center justify-center min-w-96 mx-auto">
       <div className="w-full p-6 rounded-lg shadow-md bg-gray-400 bg-clip-padding backdrop-filter backdrop-blur-lg bg-opacity-0">
         <h1 className="text-4xl font-extrabold text-center text-amber-500 spacing-large">NovaNest</h1>
         <h2 className="text-2xl font-bold text-center text-gray-500 spacing-small">Login</h2>
 
-        <form>
+        <form onSubmit={handleSubmit}>
           <div className="spacing-small">
-            <label className="block text-sm font-bold mb-2 text-amber-500" htmlFor="username">Username</label>
+            <label className="block text-sm font-bold mb-2 text-amber-500" htmlFor="userName">Username</label>
             <label className="input input-bordered flex items-center gap-2">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -25,6 +37,8 @@ const Login = () => {
                 type="text"
                 className="grow placeholder-gray-500"
                 placeholder="Enter Username"
+                value={userName}
+                onChange={(e) => setUsername(e.target.value)}
               />
             </label>
           </div>
@@ -49,6 +63,8 @@ const Login = () => {
                 type="password"
                 className="grow placeholder-gray-500"
                 placeholder="Enter Password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
               />
             </label>
           </div>
@@ -61,7 +77,9 @@ const Login = () => {
           </Link>
 
           <div className="spacing-small">
-            <button className="btn btn-warning btn-outline btn-login">Login</button>
+            <button className="btn btn-warning btn-outline btn-login" disabled={loading}>
+              {loading ? <span className='loading loading-spinner'></span> : "LogIn" }
+            </button>
           </div>
         </form>
       </div>

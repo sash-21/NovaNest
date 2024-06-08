@@ -11,11 +11,7 @@ async function getUsersforSidebar(req, res, next) {
 
         const allUsers = await userService.getAllUsers(loggedInUserId);
 
-        res.status(StatusCodes.OK).json({
-            success: true,
-            message: "Fetched all users",
-            data: allUsers,
-        });
+        res.status(StatusCodes.OK).json(allUsers);
     } catch (error) {
         next(error);
     }

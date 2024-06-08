@@ -13,11 +13,7 @@ async function signUp(req, res, next) {
         // Generating a JWT token
         generateTokenAndSetCookie(newUser._id, res); 
 
-        return res.status(StatusCodes.CREATED).json({
-            success: true,
-            message: "Created a new User",
-            data: newUser,
-        });
+        return res.status(StatusCodes.CREATED).json(newUser);
     } catch (error) {
         next(error);
     }
@@ -30,11 +26,7 @@ async function logIn(req, res, next) {
         // generating JWT token
         generateTokenAndSetCookie(loginUser._id, res);
 
-        return res.status(StatusCodes.ACCEPTED).json({
-            success: true,
-            message: "User Logged In",
-            data: loginUser,
-        });
+        return res.status(StatusCodes.ACCEPTED).json(loginUser);
     } catch (error) {
         next(error);
     }

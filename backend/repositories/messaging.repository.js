@@ -46,7 +46,7 @@ class MessagingRepository {
             }
             
             // save the newly inserted data
-            await conversation.save();
+            await Promise.all([conversation.save(), newMessage.save()]);
 
             return newMessage;
         } catch (error) {
@@ -74,6 +74,8 @@ class MessagingRepository {
         const conversation = await Conversation.findOne({
             participants: { $all: [senderId, userId] },
         }).populate("messages");
+
+        if(!conversation) return [];
 
         const messages = conversation.messages;
 

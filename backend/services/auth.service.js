@@ -19,8 +19,8 @@ class AuthService {
         } 
 
         // taking 3rd party profile picture apis
-        const boyProfilePic = 'https://avatar.iran.liara.run/public/boy?username=${userName}';
-        const girlProfilePic = 'https://avatar.iran.liara.run/public/girl?username=${userName}';
+        const boyProfilePic = `https://avatar.iran.liara.run/public/boy?username=${userName}`;
+        const girlProfilePic = `https://avatar.iran.liara.run/public/girl?username=${userName}`;
 
         // Hashing the password
         const hashedPassword = await encryptPassword(password);
