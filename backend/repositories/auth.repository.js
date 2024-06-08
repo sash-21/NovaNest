@@ -21,8 +21,16 @@ class AuthRepository {
             });
     
             await newUser.save();
-    
-            return newUser;
+            
+            const newUserResponse = {
+                _id: newUser._id,
+                fullName: newUser.fullName,
+                userName: newUser.userName,
+                gender: newUser.gender,
+                profilePicture: newUser.profilePicture
+            };
+            
+            return newUserResponse;
         } catch (error) {
             throw error;
         }
