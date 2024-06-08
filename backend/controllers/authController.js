@@ -38,9 +38,7 @@ async function logOut(req, res, next) {
 
         res.cookie("jwt", "", { maxAge: 0 });
 
-        res.status(StatusCodes.ACCEPTED).json({
-            logoutUser,
-        });
+        res.status(StatusCodes.ACCEPTED).json(logoutUser);
     } catch (error) {
         next(error);
     }

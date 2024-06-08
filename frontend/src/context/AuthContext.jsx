@@ -16,7 +16,6 @@ export const AuthContextProvider = ({ children }) => {
             try {
                 const parsedUser = JSON.parse(storedUser);
                 setAuthUser(parsedUser);
-                console.log("Parsed User:", parsedUser); // Debugging log
             } catch (error) {
                 console.error("Error parsing stored user:", error);
             }
