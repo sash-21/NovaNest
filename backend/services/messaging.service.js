@@ -1,3 +1,5 @@
+const { io, getReceiverSocketId } = require("../socket/socket");
+
 class MessagingService {
     constructor(messagingRepository) {
         this.messagingRepository = messagingRepository;
@@ -11,6 +13,12 @@ class MessagingService {
         };
 
         const newMessage = await this.messagingRepository.sendMessage(messageData);
+
+        // Socket.io functionality
+        const recieverSocketId = getReceiverSocketId(recieverId);
+        if(recieverSocketId) {
+            io.to(recieverSocketId).emit("newMessage", newMessage);
+        }
         
         return newMessage;
     }
