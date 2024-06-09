@@ -4,7 +4,9 @@
   "description": "A simple seamless web based chat application.",
   "main": "server.js",
   "scripts": {
-    "server": "npx nodemon backend/server.js"
+    "server": "npx nodemon backend/server.js",
+    "start": "node backend/server.js",
+    "build": "npm install && npm install --prefix frontend && npm run build --prefix frontend"
   },
   "author": "SS",
   "license": "ISC",
